@@ -1,0 +1,20 @@
+# This is an example afile_config.py file.
+
+"""Specify configuration data for the afile module"""
+
+# User hadfield on NIWA-1019320
+
+volume['/nesi/project/niwa00020'] = \
+    {'master': '/home/hadfield/mnt/maui/nesi/project/niwa00020',
+     'mirror': '/mnt/mirror/nesi/project/niwa00020'}
+volume['/nesi/nobackup/niwa00020'] = \
+    {'master': '/home/hadfield/mnt/maui/nesi/nobackup/niwa00020',
+     'mirror': '/mnt/mirror/nesi/nobackup/niwa00020'}
+volume['/nesi/project/niwa00020/hadfield'] = \
+    {'master': '/home/hadfield/mnt/maui/nesi/project/niwa00020/hadfield',
+     'mirror': '/mnt/mirror/nesi/project/niwa00020/hadfield'}
+volume['/nesi/nobackup/niwa00020/hadfield'] = \
+    {'master': '/home/hadfield/mnt/maui/nesi/nobackup/niwa00020/hadfield',
+     'mirror': '/mnt/mirror/nesi/nobackup/niwa00020/hadfield'}
+
+
