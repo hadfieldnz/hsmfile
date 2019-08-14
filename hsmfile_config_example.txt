@@ -1,6 +1,6 @@
-# This is an example afile_config.py file.
+# This is an example hsmfile_config.py file.
 
-"""Specify configuration data for the afile module"""
+"""Specify configuration data for the hsmfile module"""
 
 # User hadfield on NIWA-1019320
 

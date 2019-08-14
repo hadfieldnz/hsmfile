@@ -1,10 +1,10 @@
-"""GitHub.com project hadfieldnz/afile: expedite file access on slow network volumes"""
+"""GitHub.com project hadfieldnz/hsmfile: expedite file access on slow network volumes"""
 
-# The afile module is modelled on my IDL mgh_san routines:
+# The hsmfile module is modelled on my IDL mgh_san routines:
 #   https://github.com/hadfieldnz/idl-roms/tree/master/san
 
 # For usage examples see:
-#   https://git.niwa.local/hadfield/notebooks-mgh/blob/master/examples/MGH_SAN_examples.ipynb
+#   https://git.niwa.local/hadfield/notebooks-mgh/blob/master/examples/HSMfile_examples.ipynb
 
 # MGH 2019-08-05
 #   - Written, based similar Python module called mgh_san
@@ -15,7 +15,7 @@ import shutil
 from pathlib import Path
 
 # The global variable "volume" is a list that will contain dictionary items,
-# each defining an afile volume. Create the variable and populate it with an
+# each defining an hsmfile volume. Create the variable and populate it with an
 # entry specifying the home directory.
 
 volume = {}
@@ -25,9 +25,9 @@ volume['HOME'] = {'master': os.path.expanduser('~')}
 
 default = 'HOME'
 
-# The above variables will normally be modified or overidden in the file afile_customize.py
+# The above variables will normally be modified or overidden in the file hsmfile_config.py
 
-config_file = Path(site.getusersitepackages(),'afile_config.py')
+config_file = Path(site.getusersitepackages(),'hsmfile_config.py')
 
 if config_file.is_file():
     # the following idiom is adopted from https://tinyurl.com/yyk4yza3
