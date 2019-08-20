@@ -14,28 +14,29 @@ import site
 import shutil
 from pathlib import Path
 
-# The global variable "volume" is a list that will contain dictionary items,
+# The global variable "volume" is a dictionary that will contain entries
 # each defining an hsmfile volume. Create the variable and populate it with an
 # entry specifying the home directory.
 
 volume = {}
-volume['HOME'] = {'master': os.path.expanduser('~')}
+volume['HOME'] = {'master': Path.home()}
 
 # The global variable "default" is the name (dictionary key) of the default volume.
 
 default = 'HOME'
 
-# The above variables will normally be modified or overidden in the file hsmfile_config.py
+# The above variables will normally be modified or overidden in the file ~/.hsmfile.py.
 
-config_file = Path(site.getusersitepackages(),'hsmfile_config.py')
+CONFIG_FILE = Path(Path.home(),'.hsmfile.py')
 
-if config_file.is_file():
-    # the following idiom is adopted from https://tinyurl.com/yyk4yza3
-    with open(config_file) as f:
-        code = compile(f.read(), config_file, 'exec')
+if CONFIG_FILE.is_file():
+    # The following idiom is adopted from https://tinyurl.com/yyk4yza3. It is
+    # thread-safe, unlike the other code in this module!
+    with open(CONFIG_FILE) as f:
+        code = compile(f.read(), CONFIG_FILE, 'exec')
         exec(code)
 else:
-    print(f"Warning: {config_file} was not found")
+    print(f"Warning: {CONFIG_FILE} was not found")
 
 def path(name='',sub='',vol=default,mirror=False):
     """Return a path on the remote (master) or local (mirror volume)"""
