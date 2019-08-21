@@ -26,5 +26,5 @@ The hsmfile module exposes a dictionary named volume, with each entry defining a
 volume as described below. During initialisation, the dictionary is created with one
 entry, pointing to the user's home directory. However at the end of the initialisation
 process, the module attempts to read and execute Python code from a configuration
-file, ~/.hsmfile.py. This provides an opportunity for defining further volumes
+file, ~/.hsmfilerc.py. This provides an opportunity for defining further volumes
 

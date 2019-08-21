@@ -7,19 +7,18 @@
 #   https://git.niwa.local/hadfield/notebooks-mgh/blob/master/examples/HSMfile_examples.ipynb
 
 # MGH 2019-08-05
-#   - Written, based similar Python module called mgh_san
+#   - Written
 
-import os
-import site
 import shutil
-from pathlib import Path
+import logging
+import pathlib
 
 # The global variable "volume" is a dictionary that will contain entries
 # each defining an hsmfile volume. Create the variable and populate it with an
 # entry specifying the home directory.
 
 volume = {}
-volume['HOME'] = {'master': Path.home()}
+volume['HOME'] = {'master': pathlib.Path.home()}
 
 # The global variable "default" is the name (dictionary key) of the default volume.
 
@@ -27,25 +26,29 @@ default = 'HOME'
 
 # The above variables will normally be modified or overidden in the file ~/.hsmfile.py.
 
-CONFIG_FILE = Path(Path.home(),'.hsmfile.py')
+RCFILE = pathlib.Path(pathlib.Path.home(),'.hsmfilerc.py')
 
-if CONFIG_FILE.is_file():
+def loadconfig(file=RCFILE):
     # The following idiom is adopted from https://tinyurl.com/yyk4yza3. It is
     # thread-safe, unlike the other code in this module!
-    with open(CONFIG_FILE) as f:
-        code = compile(f.read(), CONFIG_FILE, 'exec')
-        exec(code)
-else:
-    print(f"Warning: {CONFIG_FILE} was not found")
+    try:
+        with open(file) as f:
+            code = compile(f.read(), RCFILE, 'exec')
+            exec(code)
+        logging.info(f"Configuration file {file} loaded")
+    except FileNotFoundError:
+        logging.warning(f"Configuration file {file} was not found")
+
+loadconfig()
 
 def path(name='',sub='',vol=default,mirror=False):
     """Return a path on the remote (master) or local (mirror volume)"""
     if mirror:
         root = volume[vol]['mirror']
-        return Path(root,sub,name)
+        return pathlib.Path(root,sub,name)
     else:
         root = volume[vol]['master']
-        return Path(root,sub,name)
+        return pathlib.Path(root,sub,name)
 
 def search(pattern='*',sub='',vol=default,mirror=False):
     """Search for files on the remote (master) or local (mirror volume)"""
@@ -53,7 +56,7 @@ def search(pattern='*',sub='',vol=default,mirror=False):
     return sorted([f.relative_to(base) for f in base.glob(pattern)])
 
 def file(name='',sub='',vol=default,mirror=None):
-    """Return a Path object for a file
+    """Return a pathlib.Path object for a file
 
     The file must exist on the master and is automatically copied to the
     mirror as necessary
