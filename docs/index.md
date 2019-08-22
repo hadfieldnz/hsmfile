@@ -13,12 +13,19 @@ It is based on a set of IDL functions with a similar purpose with the prefix
 [mgh_san](https://github.com/hadfieldnz/idl-roms/tree/master/san).
 
 ## Installation
+Install from [PyPI](https://pypi.org/) with PIP:
+```
+pip install hsmfile
+```
 
-Clone the source repository and install with PIP:
+Clone the [GitHub](https://github.com/) repository and install with PIP in developer mode:
 ```
 git clone https://github.com/hadfieldnz/hsmfile.github
-pip install .
+pip install -e hsmfile
 ```
+Or better still, fork your own copy on GitHub and clone that. That way, you can contribute improvements and bug fixes back into the main repository. Or not.
+
+A conda-forge package is coming soon.
 
 ## User customisation
 
