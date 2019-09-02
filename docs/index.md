@@ -23,7 +23,7 @@ Clone the [GitHub](https://github.com/) repository and install with PIP in devel
 git clone https://github.com/hadfieldnz/hsmfile.github
 pip install -e hsmfile
 ```
-Or better still, fork your own copy on GitHub and clone that. That way, you can contribute improvements and bug fixes back into the main repository. Or not.
+Or better still, fork your own copy on GitHub and clone that. This way, you can maintain your own improvements and bug fixes and optionally contribute them to the main repository.
 
 A conda-forge package is coming soon.
 
@@ -33,5 +33,12 @@ The hsmfile module exposes a dictionary named volume, with each entry defining a
 volume as described below. During initialisation, the dictionary is created with one
 entry, pointing to the user's home directory. However at the end of the initialisation
 process, the module attempts to read and execute Python code from a configuration
-file, ~/.hsmfilerc.py. This provides an opportunity for defining further volumes
+file, ~/.hsmfilerc.py. This provides an opportunity for defining further volumes.
+
+## TODO
+
+The present user customization mechanism is insecure, as it involves executing arbitrary Python code. It will shortly be changed to one that reads volume definitions from a
+configuration file using the configparser module.
+therefore unsafe
+
 
