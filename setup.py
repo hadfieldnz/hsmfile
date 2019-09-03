@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+with open("README.md", "r") as f:
+    long_description = f.read()
 
 setup(
    name='hsmfile',
@@ -9,6 +9,7 @@ setup(
    license='MIT',
    description='Expedite access to files on a slow network volume',
    long_description=long_description,
+   long_description_content_type="text/markdown",
    author='Mark Hadfield',
    author_email='mark.hadfield@niwa.co.nz',
    url='https://github.com/hadfieldnz/hsmfile',
