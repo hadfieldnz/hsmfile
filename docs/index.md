@@ -13,6 +13,11 @@ It is based on a set of IDL functions with a similar purpose with the prefix
 [mgh_san](https://github.com/hadfieldnz/idl-roms/tree/master/san).
 
 ## Installation
+Install from [Conda-Forge](https://conda-forge.org/) with the conda package manager
+```
+conda install -c conda-forge hsmfile
+```
+
 Install from [PyPI](https://pypi.org/) with PIP:
 ```
 pip install hsmfile
@@ -25,10 +30,7 @@ pip install -e hsmfile
 ```
 Or better still, fork your own copy on GitHub and clone that. This way, you can maintain your own improvements and bug fixes and optionally contribute them to the main repository.
 
-A conda-forge package is coming soon.
-
 ## User customisation
-
 The hsmfile module exposes a dictionary named volume, with each entry defining an hsmfile
 volume as described below. During initialisation, the dictionary is created with one
 entry, pointing to the user's home directory. However at the end of the initialisation
@@ -39,6 +41,5 @@ file, ~/.hsmfilerc.py. This provides an opportunity for defining further volumes
 
 The present user customization mechanism is insecure, as it involves executing arbitrary Python code. It will shortly be changed to one that reads volume definitions from a
 configuration file using the configparser module.
-therefore unsafe
 
 
